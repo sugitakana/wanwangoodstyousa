@@ -23,6 +23,7 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+## 実装機能リスト
+- https://docs.google.com/spreadsheets/d/1hWxtBUe75x-7_UXjr4vj0OK9K30sH_mK-Doa7e0TBzc/edit?usp=sharing
+
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
