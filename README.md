@@ -15,7 +15,7 @@
 
 ## 設計書
 ### ER図
-https://drive.google.com/file/d/1qYLvoO6VjronC4XMc913CMklnRYTKc3V/view?usp=sharing
+https://drive.google.com/file/d/1SYxrwPDl9InhuGIAhQTRvSeXiELpGy1J/view?usp=sharing
 ### テーブル定義書
 https://docs.google.com/spreadsheets/d/1lNaIgXGzdV7bzTT5eYESnBz2JnfQFPU83m-NA06megM/edit?usp=sharing
 
