@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
   namespace :admin do
+    resources :tags, only:[:index, :create, :edit, :update]
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
