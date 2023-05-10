@@ -1,0 +1,24 @@
+<h2>会員登録情報</h2>
+<table>
+  <tr>
+    <th>名前</th>
+    <td><%= @customer.name %></td>
+  </tr>
+  <tr>
+    <th>自己紹介</th>
+    <td><%= @customer.introduction %></td>
+  </tr>
+</table>
+
+<% if @customer == current_customer %>
+  <%= link_to "編集する", edit_customer_path(@customer) %>
+  <%#= link_to "いいね一覧", %>
+<% end %>
+
+<h2>投稿したレビュー一覧</h2>
+<%# @reviews.each do |customer| %>
+  <%#= image_tag review.get_image %>
+  <%#= review.item_name %>
+  <%#= 評価 %>
+  <%#= link_to "レビューを見る", %>
+<%# end %>

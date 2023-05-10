@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   }
   scope module: :public do
     root to: 'homes#top'
+    get 'about' => 'homes#about', as: 'about'
+    get '/customers/confirm_withdraw' => 'customers#confirm_withdraw', as: 'confirm_withdraw'
+    patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    resources :customers, only:[:show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
