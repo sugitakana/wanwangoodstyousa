@@ -1,0 +1,7 @@
+<h2>退会</h2>
+<p>退会するとレビューを投稿したり、<br>
+   コメントやいいねしたりすることができなくなります。<br>
+   またいいねしたレビューの記録もなくなります。</p>
+   
+   <%= link_to "退会しない", customer_path(current_customer) %>
+   <%= link_to "退会する", withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
