@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get '/customers/confirm_withdraw' => 'customers#confirm_withdraw', as: 'confirm_withdraw'
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :customers, only:[:show, :edit, :update]
+    resources :tags, only:[:show]
     resources :reviews
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

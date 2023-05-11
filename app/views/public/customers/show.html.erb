@@ -16,9 +16,9 @@
 <% end %>
 
 <h2>投稿したレビュー一覧</h2>
-<%# @reviews.each do |customer| %>
-  <%#= image_tag review.get_image %>
-  <%#= review.item_name %>
-  <%#= 評価 %>
-  <%#= link_to "レビューを見る", %>
-<%# end %>
+<% @reviews.each do |customer| %>
+  <%= image_tag review.get_image %>
+  <%= review.item_name %>
+  <%= 評価 %>
+  <%= link_to "レビューを見る", review_path(customer.id) %>
+<% end %>
