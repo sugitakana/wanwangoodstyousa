@@ -19,6 +19,10 @@ class Public::ReviewsController < ApplicationController
     @reviews = Review.all
   end
   
+  def search
+    @reviews = Review.search(params[:keyword])
+  end
+  
   def show
   end
   

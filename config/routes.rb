@@ -21,7 +21,11 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :customers, only:[:show, :edit, :update]
     resources :tags, only:[:show]
-    resources :reviews
+    resources :reviews do
+      collection do
+        get 'search'
+      end
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

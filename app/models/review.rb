@@ -3,6 +3,14 @@ class Review < ApplicationRecord
   belongs_to :tag
   
   has_one_attached :image
+  
+  def self.search(search)
+    if search != ""
+      Review.where(['item_name LIKE(?) OR review LIKE(?)',"%#{search}%","%#{search}%"])  
+    else
+      Review.all
+    end
+  end
    
   def get_image
     unless image.attached?
