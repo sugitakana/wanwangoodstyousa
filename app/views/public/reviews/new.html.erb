@@ -22,19 +22,19 @@
     <div id="post_raty"></div>
 　</div>
 　<script>
-      $(document).on('turbolinks:load', function() {
-        let elem = document.querySelector('#post_raty');
-        if (elem == null) return;
+    $(document).on('turbolinks:load', function() {
+      let elem = document.querySelector('#post_raty');
+      if (elem == null) return;
 
-        elem.innerHTML = ""
-        let opt = {
-          starOn: "<%= asset_path('star-on.png') %>",
-          starOff: "<%= asset_path('star-off.png') %>",
-          scoreName: 'review[rate]',
-          half: false,
-        };
-        raty(elem, opt);
-      });
+      elem.innerHTML = ""
+      let opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'review[rate]',
+        half: false,
+      };
+      raty(elem, opt);
+    });
   </script>
  <% else %>
   <div class="form-group">

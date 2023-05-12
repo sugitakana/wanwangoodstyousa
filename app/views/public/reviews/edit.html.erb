@@ -1,0 +1,65 @@
+<h2>レビュー編集</h2>
+<%= form_with model: @review, url: review_path, local: true do |f| %>
+ <%= f.label :image, "商品画像" %>
+ <%= f.file_field :image, accept: "image/*" %>
+  
+ <%= f.label :item_name, "商品名" %>
+ <%= f.text_field :item_name %>
+
+ <%= f.label :item_price, "商品の値段(税込)" %>
+ <%= f.text_field :item_price %>円
+
+ <%= f.label :dog_breed, "商品を試した犬種" %>
+ <%= f.text_field :dog_breed %>
+  
+ <%= f.label :tag, "タグ" %>
+ <%= f.collection_select :tag_id, Tag.all, :id, :name,{prompt: "--選択してください--"} %>
+  
+ <% if @review.id.nil? %>
+  <div class="form-group row" id="rate">
+    <%= f.label :rate, "評価" %>
+    <%= f.hidden_field :rate, id: :review_rate %>
+    <div id="post_raty"></div>
+　</div>
+　<script>
+    $(document).on('turbolinks:load', function() {
+      let elem = document.querySelector('#post_raty');
+      if (elem == null) return;
+
+      elem.innerHTML = ""
+      let opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'review[rate]',
+        half: false,
+      };
+      raty(elem, opt);
+    });
+  </script>
+ <% else %>
+  <div class="form-group">
+   <div id="rate_<%= review.id %>"></div>
+   <script>
+    $(document).on('turbolinks:load', function() {
+      let elem = document.querySelector('#rate_<%= review.id %>');
+      if (elem == null) return;
+  
+      elem.innerHTML = "";
+      let opt = {  
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        score: "<%= review.rate %>",
+        readOnly: true,
+        half: false,
+      };
+      raty(elem, opt);
+    });
+   </script>
+  </div>
+ <% end %>
+
+  <%= f.label :review, "レビュー" %>
+  <%= f.text_area :review %>
+
+  <%= f.submit "変更を保存する" %>
+<% end %>

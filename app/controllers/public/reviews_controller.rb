@@ -27,9 +27,17 @@ class Public::ReviewsController < ApplicationController
   end
   
   def edit
+    @review = Review.find(params[:id])
   end
   
   def update
+    @review = Review.find([:id])
+    if @review.update(review_params)
+      flash[:notice] = "レビュー情報を更新しました"
+      redirect_to review_path(@review)
+    else
+      render 'edit'
+    end
   end
   
   def destroy
