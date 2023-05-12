@@ -1,0 +1,54 @@
+<h4>レビュー詳細</h4>
+<%= link_to customer_path(@review.customer.id) do %>
+  <%= @review.customer.name %>
+<% end %>
+<%= image_tag @review.get_image(250, 250) %>
+
+<div id="star_<%= @review.id %>"></div>
+<script>
+ $(document).on('turbolinks:load', function() {
+   let elem = document.querySelector('#rate_<%= @review.id %>');
+   if (elem == null) return;
+  
+   elem.innerHTML = "";
+   let opt = {  
+     starOn: "<%= asset_path('star-on.png') %>",
+     starOff: "<%= asset_path('star-off.png') %>",
+     score: "<%= review.rate %>",
+     readOnly: true,
+     half: false,
+   };
+   raty(elem, opt);
+ });
+</script>
+
+<%#= いいね機能 %>
+
+<table>
+  <tr>
+    <th>商品名</th>
+    <td><%= @review.item_name %></td>
+  </tr>
+  <tr>
+    <th>タグ</th>
+    <td><%= @review.tag.name %></td>
+  </tr>
+  <tr>
+    <th>値段（税込）</th>
+    <td><%= @review.item_price %>円</td>
+  </tr>
+  <tr>
+    <th>商品を試した犬種</th>
+    <td><%= @review.dog_breed %></td>
+  </tr>
+</table>
+
+<p>レビュー</p>
+<%= @review.review %>
+
+<% if @review.customer == current_customer %>
+ <%= link_to "編集する", edit_review_path(@review) %>
+ <%= link_to "削除する", review_path(@review), method: :delete %>
+<% end %>
+
+<h3>コメント</h3>
