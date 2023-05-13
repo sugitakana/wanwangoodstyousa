@@ -1,25 +1,6 @@
-<table>
-  <tr>
-    <th>タグ検索</th>
-  </tr>
-  <% @tags.each do |tag| %>
-   <tr>
-    <td><%= link_to tag_path(tag.id) do %>
-          <%= tag.name %>
-        <% end %>
-    </td>
-   </tr>
-  <% end %>
-</table>
-
 <h2>レビュー一覧</h2>（全<%= @reviews.count %>件）
-<%= form_with(url: search_reviews_path, local: true, method: :get ) do |form| %>
-  <%= form.text_field :keyword %>
-  <%= form.submit "検索" %>
-<% end %>
-
 <% @reviews.each do |review| %>
-  <%= link_to customer_path(review.customer.id) do %>
+  <%= link_to admin_customer_path(review.customer.id) do %>
     <%= review.customer.name %>
   <% end %>
   <%= image_tag review.get_image(200, 200) %>
