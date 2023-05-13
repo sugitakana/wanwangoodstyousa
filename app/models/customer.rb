@@ -19,5 +19,4 @@ class Customer < ApplicationRecord
   end
   
   validates :name, presence: true
-  validates :introduction, allow_blank: true
 end
