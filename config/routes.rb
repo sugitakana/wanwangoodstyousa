@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
   namespace :admin do
-    
+    root to: 'homes#top'
     resources :tags, only:[:index, :create, :edit, :update]
-    resources :reviews, only:[:index, :show, :destory]
+    resources :reviews, only:[:index, :show, :destroy]
     resources :customers, only:[:show, :edit, :update]
   end
 

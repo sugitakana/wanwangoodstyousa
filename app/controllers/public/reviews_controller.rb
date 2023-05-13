@@ -24,6 +24,7 @@ class Public::ReviewsController < ApplicationController
   end
   
   def show
+    @review = Review.find(params[:])
   end
   
   def edit
