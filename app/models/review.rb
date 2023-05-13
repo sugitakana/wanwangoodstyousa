@@ -19,4 +19,11 @@ class Review < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  validates :item_name, presence: true
+  validates :item_price, presence: true
+  validates :dog_breed, presence: true
+  validates :review, presence: true
+  validates :rate, presence: true
+
 end

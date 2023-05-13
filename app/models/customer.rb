@@ -13,4 +13,11 @@ class Customer < ApplicationRecord
       customer.name = "ゲスト"
     end
   end
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+  
+  validates :name, presence: true
+  validates :introduction, allow_blank: true
 end
