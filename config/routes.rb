@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :tags, only:[:index, :create, :edit, :update]
-    resources :reviews, only:[:index, :show, :destroy]
-    resources :customers, only:[:show, :edit, :update]
+    resources :reviews, only:[:show, :destroy]
+    resources :customers, only:[:index, :show, :edit, :update]
   end
 
   devise_for :customers,skip: [:passwords], controllers: {

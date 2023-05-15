@@ -3,7 +3,10 @@ class Admin::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
   
-  def destory
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to admin_reviews_path
   end
   
   private

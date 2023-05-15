@@ -24,7 +24,7 @@ class Public::ReviewsController < ApplicationController
   end
   
   def show
-    @review = Review.find(params[:])
+    @review = Review.find(params[:id])
   end
   
   def edit
@@ -42,6 +42,9 @@ class Public::ReviewsController < ApplicationController
   end
   
   def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to reviews_path
   end
   
   private

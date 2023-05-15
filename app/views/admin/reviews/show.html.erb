@@ -1,5 +1,5 @@
 <h4>レビュー詳細</h4>
-<%= link_to customer_path(@review.customer.id) do %>
+<%= link_to admin_customer_path(@review.customer.id) do %>
   <%= @review.customer.name %>
 <% end %>
 <%= image_tag @review.get_image(250, 250) %>
@@ -44,6 +44,6 @@
 <p>レビュー</p>
 <%= @review.review %>
 
-<%= link_to "削除する", admin_review_path(@review), method: :delete %>
+<%= link_to "削除する", admin_review_path(@review), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 
 <h3>コメント</h3>

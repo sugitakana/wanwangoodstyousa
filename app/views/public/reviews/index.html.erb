@@ -18,7 +18,8 @@
   <%= form.submit "検索" %>
 <% end %>
 
-<% @reviews.each do |review| %>
+<div class="text_box">
+ <% @reviews.each do |review| %>
   <%= link_to customer_path(review.customer.id) do %>
     <%= review.customer.name %>
   <% end %>
@@ -35,13 +36,17 @@
       let opt = {  
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
         score: "<%= review.rate %>",
         readOnly: true,
-        half: false,
       };
       raty(elem, opt);
     });
   </script>
+  <div class="review">
+   <%= review.review %>
+  </div>
   
   <%= link_to "レビューを見る", review_path(review.id) %>
-<% end %>
+ <% end %>
+</div>
