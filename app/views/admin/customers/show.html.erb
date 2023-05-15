@@ -1,0 +1,34 @@
+<h2>会員登録情報</h2>
+<table>
+  <tr>
+    <th>会員ID</th>
+    <td><%= @customer.id %></td>
+  </tr>
+  <tr>
+    <th>名前</th>
+    <td><%= @customer.name %></td>
+  </tr>
+  <tr>
+    <th>自己紹介</th>
+    <td><%= @customer.introduction %></td>
+  </tr>
+  <tr>
+    <th>会員ステータス</th>
+    <td><% if @customer.is_deleted == false %>
+          <%= "有効" %>
+        <% else %>
+          <%= "退会" %>
+        <% end %>
+    </td>
+  </tr>
+</table>
+
+<%= link_to "編集する", edit_admin_customer_path(@customer) %>
+
+<h2>投稿したレビュー一覧</h2>
+<% @reviews.each do |customer| %>
+  <%= image_tag review.get_image(250, 250) %>
+  <%= review.item_name %>
+  <%= 評価 %>
+  <%= link_to "レビューを見る", admin_review_path(review.customer.id) %>
+<% end %>

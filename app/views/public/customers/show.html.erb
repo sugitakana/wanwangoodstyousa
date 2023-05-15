@@ -20,5 +20,5 @@
   <%= image_tag review.get_image %>
   <%= review.item_name %>
   <%= 評価 %>
-  <%= link_to "レビューを見る", review_path(customer.id) %>
+  <%= link_to "レビューを見る", review_path(review.customer.id) %>
 <% end %>
