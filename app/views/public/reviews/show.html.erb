@@ -23,7 +23,7 @@
 </script>
 
 <div id="favorites_buttons<%= @review.id %>">
-   <%= render partial: 'favorites/favorite', locals: { review: @review, favorite: @favorite} %>
+  <%= render "favorites/favorite", review: @review %>
 </div>
 
 <table>

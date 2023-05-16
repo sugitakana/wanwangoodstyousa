@@ -1,16 +1,13 @@
-<% if customer_signed_in? %>
-
-  <% unless @review.favorite_customer(current_customer.id).blank? %>
-    <%= link_to review_favorites_path(review_id), method: :delete, remote: true do %>
+  <% if review.favorited_by?(current_user) %>
+    <%= link_to review_favorites_path(review), method: :delete, remote: true, data: {"turbolinks" => false} do %>
       <div class="vertical_favorite">
-       ♥<%= @review.favorites.count %> いいね
+       ♥<%= review.favorites.count %>件
       </div>
     <% end %>
   <% else %>
-    <%= link_to review_favorites_path(review.id), method: :post, remote: true do %>
+    <%= link_to review_favorites_path(review), method: :post, remote: true, data: {"turbolinks" => false} do %>
       <div class="vertical_favorite">
-        ♡<%= @review.favorites.count %> いいね
+        ♡<%= review.favorites.count %>件
       </div>
     <% end %>
   <% end %>
-<% end %>
