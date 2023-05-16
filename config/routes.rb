@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :customers, only:[:show, :edit, :update]
     resources :tags, only:[:show]
     resources :reviews do
+      resource :favorites, only: [:create, :destroy]
       collection do
         get 'search'
       end

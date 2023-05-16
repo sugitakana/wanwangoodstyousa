@@ -1,0 +1,16 @@
+<% if customer_signed_in? %>
+
+  <% unless @review.favorite_customer(current_customer.id).blank? %>
+    <%= link_to review_favorites_path(review_id), method: :delete, remote: true do %>
+      <div class="vertical_favorite">
+       ♥<%= @review.favorites.count %> いいね
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to review_favorites_path(review.id), method: :post, remote: true do %>
+      <div class="vertical_favorite">
+        ♡<%= @review.favorites.count %> いいね
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

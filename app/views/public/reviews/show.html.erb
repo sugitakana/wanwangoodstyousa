@@ -22,7 +22,9 @@
  });
 </script>
 
-<%#= いいね機能 %>
+<div id="favorites_buttons<%= @review.id %>">
+   <%= render partial: 'favorites/favorite', locals: { review: @review, favorite: @favorite} %>
+</div>
 
 <table>
   <tr>

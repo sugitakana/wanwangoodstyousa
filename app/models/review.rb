@@ -2,7 +2,13 @@ class Review < ApplicationRecord
   belongs_to :customer
   belongs_to :tag
   
+  has_many :favorites, dependent: :destroy
+  
   has_one_attached :image
+  
+  def favorite_customer(customer_id)
+    favorites.find_by(customer_id: customer_id)
+  end
   
   def self.search(search)
     if search != ""
