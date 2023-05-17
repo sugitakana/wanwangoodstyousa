@@ -29,10 +29,11 @@ Rails.application.routes.draw do
     end
     resources :tags, only:[:show]
     resources :reviews do
-      resource :favorites, only: [:create, :destroy]
-       collection do
+      resources :comments, only:[:create, :destyoy]
+      resource :favorites, only:[:create, :destroy]
+      collection do
         get 'search'
-       end
+      end
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

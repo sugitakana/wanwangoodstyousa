@@ -2,6 +2,7 @@ class Review < ApplicationRecord
   belongs_to :customer
   belongs_to :tag
   
+  has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_customers, through: :favorites, source: :customer
   
