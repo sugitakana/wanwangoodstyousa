@@ -1,4 +1,11 @@
 class Public::CustomersController < ApplicationController
+  before_action :set_customer, only: [:favorites]
+  
+  def favorites
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:review_id)
+    @favorite_reviews = Review.find(favorites)
+  end
+  
   def show
     @customer = Customer.find(params[:id])
     @reviews = @customer.reviews
@@ -29,6 +36,11 @@ class Public::CustomersController < ApplicationController
   end
   
   private
+  
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
+  
   def customer_params
     params.require(:customer).permit(:name, :introduction, :email, :is_deleted)
   end

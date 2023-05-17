@@ -22,13 +22,17 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about', as: 'about'
     get '/customers/confirm_withdraw' => 'customers#confirm_withdraw', as: 'confirm_withdraw'
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
-    resources :customers, only:[:show, :edit, :update]
+    resources :customers, only:[:show, :edit, :update] do
+      member do
+        get 'favorites'
+      end
+    end
     resources :tags, only:[:show]
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
-      collection do
+       collection do
         get 'search'
-      end
+       end
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

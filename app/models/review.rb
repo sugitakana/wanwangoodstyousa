@@ -3,13 +3,10 @@ class Review < ApplicationRecord
   belongs_to :tag
   
   has_many :favorites, dependent: :destroy
+  has_many :favorite_customers, through: :favorites, source: :customer
   
   has_one_attached :image
-  
-  def favorite_customer(customer_id)
-    favorites.find_by(customer_id: customer_id)
-  end
-  
+ 
   def self.search(search)
     if search != ""
       Review.where(['item_name LIKE(?) OR review LIKE(?)',"%#{search}%","%#{search}%"])  
