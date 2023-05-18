@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
-  devise_scope :public do
-    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+  devise_scope :customer do
+    post 'public/guest_sign_in', to: 'public/sessions#new_guest'
   end
   scope module: :public do
     root to: 'homes#top'
@@ -31,10 +31,10 @@ Rails.application.routes.draw do
     resources :reviews do
       resources :comments, only:[:create, :destyoy]
       resource :favorites, only:[:create, :destroy]
-      collection do
-        get 'search'
+        collection do
+          get 'search'
+        end
       end
     end
-  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+  end

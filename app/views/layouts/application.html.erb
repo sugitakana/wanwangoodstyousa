@@ -2,21 +2,25 @@
 <html>
   <head>
     <title>Wanwangoodstyousa</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
   </head>
 
-  <body>
-    <header>
-      <div>
-        <nav>
-          <div>
-            <ul>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/">わんわんグッズ調査</a>
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
              <% if admin_signed_in? %>
                 <li class="nav-item">
                   <%= link_to admin_root_path do %>
@@ -84,8 +88,8 @@
              <% end %>
             </ul>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
     <main>
       <p class="notice"><%= notice %></p>

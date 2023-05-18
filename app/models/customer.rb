@@ -8,13 +8,13 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_reviews, through: :favorites, source: :review
    has_many :comments, dependent: :destroy
-  
+   
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |customer|
-      customer.password = SecureRandom.urlsafe_base64
-      customer.password_confirmation = customer.password
-      customer.name = "ゲスト"
-    end
+   find_or_create_by!(email: 'aaa@aaa.com') do |customer|
+    customer.password = SecureRandom.urlsafe_base64
+    customer.password_confirmation = customer.password
+    customer.name = 'ゲスト'
+   end
   end
   
   def active_for_authentication?
