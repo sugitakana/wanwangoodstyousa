@@ -14,14 +14,14 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
-  devise_scope :customer do
-    post 'public/guest_sign_in', to: 'public/sessions#new_guest'
-  end
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
     get '/customers/confirm_withdraw' => 'customers#confirm_withdraw', as: 'confirm_withdraw'
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    devise_scope :customer do
+      post 'customers/guest_sign_in', to: 'public/sessions#new_guest'
+    end
     resources :customers, only:[:show, :edit, :update] do
       member do
         get 'favorites'
