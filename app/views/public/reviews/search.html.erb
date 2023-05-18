@@ -9,6 +9,7 @@
   <% end %>
   <%= image_tag review.get_image(200, 200) %>
   <%= review.item_name %>
+  <%= review.item_price.to_s(:delimited) %>円
   <div id="favorite_<%= review.id %>">
     <%= render "favorites/favorite", review: review %>
   </div>

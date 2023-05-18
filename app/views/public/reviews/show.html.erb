@@ -21,7 +21,7 @@
   </tr>
   <tr>
     <th>値段（税込）</th>
-    <td><%= @review.item_price %>円</td>
+    <td><%= @review.item_price.to_s(:delimited) %>円</td>
   </tr>
   <tr>
     <th>商品を試した犬種</th>

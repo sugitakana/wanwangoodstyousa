@@ -9,8 +9,8 @@
   <%= f.label :item_price, "商品の値段(税込)" %>
   <%= f.text_field :item_price %>円
 
-  <%= f.label :dog_breed, "商品を試した犬種" %>
-  <%= f.text_field :dog_breed %>
+  <%= f.label :dog_breed %>
+  <%= f.text_field :dog_breed, placeholder: "トイプードル" %>
 
   <%= f.label :tag, "タグ" %>
   <%= f.collection_select :tag_id, Tag.all, :id, :name,{prompt: "--選択してください--"} %>
@@ -37,7 +37,7 @@
   </script>
 
   <%= f.label :review, "レビュー" %>
-  <%= f.text_area :review %>
+  <%= f.text_area :review, placeholder: "商品のレビューをここに書いてください" %>
 
   <%= f.submit "投稿する" %>
 <% end %>

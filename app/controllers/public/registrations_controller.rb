@@ -61,7 +61,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def after_sign_up_path_for(resource)
-    customers_path(current_customer)
+    customer_path(current_customer)
   end
   
   def ensure_normal_customer

@@ -12,7 +12,7 @@
 
 <% if @customer == current_customer %>
   <%= link_to "編集する", edit_customer_path(@customer) %>
-  <%= link_to "いいねした投稿", favorotes_customer_path(@customer) %>
+  <%= link_to "いいねした投稿", favorites_customer_path(@customer) %>
 <% end %>
 
 <h2>投稿したレビュー一覧</h2>

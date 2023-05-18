@@ -4,6 +4,7 @@ class Public::CustomersController < ApplicationController
   def favorites
     favorites = Favorite.where(customer_id: @customer.id).pluck(:review_id)
     @favorite_reviews = Review.find(favorites)
+    @tags = Tag.all
   end
   
   def show
