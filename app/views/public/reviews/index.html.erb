@@ -29,23 +29,8 @@
     <%= render "favorites/favorite", review: review %>
   </div>
  
-  <div id="rate_<%= review.id %>"></div>
-  <script>
-    $(document).on('turbolinks:load', function() {
-      let elem = document.querySelector('#rate_<%= review.id %>');
-      if (elem == null) return;
+  <%= render "rate", review: review %>
   
-      elem.innerHTML = "";
-      let opt = {  
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
-        score: "<%= review.rate %>",
-        readOnly: true,
-      };
-      raty(elem, opt);
-    });
-  </script>
   <div class="review">
    <%= review.review %>
   </div>

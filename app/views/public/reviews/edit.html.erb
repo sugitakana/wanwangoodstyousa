@@ -15,26 +15,8 @@
  <%= f.label :tag, "タグ" %>
  <%= f.collection_select :tag_id, Tag.all, :id, :name,{prompt: "--選択してください--"} %>
   
-  <div class="form-group">
-   <div id="rate_<%= review.id %>"></div>
-   <script>
-    $(document).on('turbolinks:load', function() {
-      let elem = document.querySelector('#rate_<%= review.id %>');
-      if (elem == null) return;
-  
-      elem.innerHTML = "";
-      let opt = {  
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
-        score: "<%= review.rate %>",
-        readOnly: true,
-      };
-      raty(elem, opt);
-    });
-   </script>
-  </div>
-
+ <%= render "rate", review: review %>
+ 
   <%= f.label :review, "レビュー" %>
   <%= f.text_area :review %>
 
