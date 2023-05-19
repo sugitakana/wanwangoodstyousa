@@ -16,9 +16,5 @@
  
   <%= render "rate", review: review %>
   
-  <div class="review">
-   <%= review.review %>
-  </div>
-  
   <%= link_to "レビューを見る", review_path(review.id) %>
 <% end %>

@@ -1,24 +1,40 @@
-<h2>会員登録情報</h2>
-<table>
-  <tr>
-    <th>名前</th>
-    <td><%= @customer.name %></td>
-  </tr>
-  <tr>
-    <th>自己紹介</th>
-    <td><%= @customer.introduction %></td>
-  </tr>
-</table>
-
-<% if @customer == current_customer %>
-  <%= link_to "編集する", edit_customer_path(@customer) %>
-  <%= link_to "いいねした投稿", favorites_customer_path(@customer) %>
-<% end %>
-
-<h2>投稿したレビュー一覧</h2>
-<% @reviews.each do |customer| %>
-  <%= image_tag review.get_image %>
-  <%= review.item_name %>
-  <%= 評価 %>
-  <%= link_to "レビューを見る", review_path(review.customer.id) %>
-<% end %>
+<div class="container">
+  <h2 class="mb-4"><i class="fas fa-paw"></i>会員登録情報<i class="fas fa-paw"></i></h2>
+  <div class="row">
+    <div class="col-md-3">
+      <table class="table">
+        <tr>
+          <th>名前</th>
+          <td><%= @customer.name %></td>
+        </tr>
+        <tr>
+          <th>自己紹介</th>
+          <td><%= @customer.introduction %></td>
+        </tr>
+      </table>
+      <div class="row">
+        <% if @customer == current_customer %>
+         <div class="mx-auto">
+          <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-success" %>
+         </div>
+         <div class="mx-auto">
+          <%= link_to "いいねした投稿", favorites_customer_path(@customer), class: "btn btn-danger" %>
+         </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h4><i class="fas fa-dog"></i>投稿したレビュー一覧</h4>
+      <% @reviews.each do |customer| %>
+        <%= image_tag review.get_image(200, 200) %>
+        <%= review.item_name %>
+        <%= review.item_price.to_s(:delimited) %>円
+        <div id="favorite_<%= review.id %>">
+          <%= render "favorites/favorite", review: review %>
+        </div>
+        <%= render "reviews/rate", review: review %>
+        <%= link_to "レビューを見る", review_path(review.customer.id), class: "btn btn-warning" %>
+      <% end %>
+    </div>
+  </div>
+</div>

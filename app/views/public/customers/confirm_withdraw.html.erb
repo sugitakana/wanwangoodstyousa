@@ -1,7 +1,21 @@
-<h2>退会</h2>
-<p>退会するとレビューを投稿したり、<br>
-   コメントやいいねしたりすることができなくなります。<br>
-   またいいねしたレビューの記録もなくなります。</p>
-   
-   <%= link_to "退会しない", customer_path(current_customer) %>
-   <%= link_to "退会する", withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
+<div class="container">
+   <div class="row">
+      <div class="col-md-12 text-center">
+        <h2><i class="fas fa-paw"></i>退会<i class="fas fa-paw"></i></h2>
+        <h5>本当に退会しますか？</h5>
+        <p>退会するとレビューを投稿したり、<br>
+           コメントやいいねしたりすることができなくなります。<br>
+           またいいねしたレビューの記録もなくなります。<br>
+           退会する場合は、「退会する」をクリックしてください。</p>
+        <div>
+           <span class="mx-auto">
+             <%= link_to "退会しない", customer_path(current_customer), class: "btn btn-primary" %>
+           </span>
+           <span class="ml-5">
+             <%= link_to "退会する", withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+           </span>
+        </div>
+      </div>
+   </div>
+</div>
+<%= image_tag '1661775.jpg', size: "1000x300", class: "d-block mx-auto img-fluid" %>
