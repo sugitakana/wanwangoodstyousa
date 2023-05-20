@@ -1,3 +1,5 @@
+<%= render 'public/reviews/tag', tags: @tags %>
+
 <h2>レビュー一覧</h2>（全<%= @reviews.count %>件）
 <% @reviews.each do |review| %>
   <%= link_to admin_customer_path(review.customer.id) do %>
