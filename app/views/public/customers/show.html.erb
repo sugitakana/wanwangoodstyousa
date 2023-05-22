@@ -25,14 +25,14 @@
     </div>
     <div class="col-md-9">
       <h4>投稿したレビュー一覧<i class="fas fa-dog"></i></h4>
-      <% @reviews.each do |customer| %>
-        <%= image_tag review.get_image(200, 200) %>
+      <% @reviews.each do |review| %>
+        <%= image_tag review.get_image(200, 200) %><br>
         <%= review.item_name %>
         <%= review.item_price.to_s(:delimited) %>円
         <div id="favorite_<%= review.id %>">
-          <%= render "favorites/favorite", review: review %>
+          <%= render "public/favorites/favorites", review: review %>
         </div>
-        <%= render "reviews/rate", review: review %>
+        <%= render "public/reviews/rate", review: review %>
         <%= link_to "レビューを見る", review_path(review.customer.id), class: "btn btn-warning" %>
       <% end %>
     </div>

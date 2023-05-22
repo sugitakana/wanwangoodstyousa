@@ -21,6 +21,10 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
   
+  def favorited_by?(review_id)
+   favorites.where(review_id: review_id).exists?
+  end
+ 
   validates :name, presence: true
   validates :introduction, length: {maximum: 50}
 end

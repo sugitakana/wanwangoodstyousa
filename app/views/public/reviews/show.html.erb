@@ -7,7 +7,7 @@
 <%= render "rate", review: @review %>
 
 <div id="favorite_<%= @review.id %>">
-  <%= render "favorites/favorite", review: @review %>
+  <%= render "public/favorites/favorites", review: @review %>
 </div>
 
 <table>
@@ -38,8 +38,8 @@
 <% end %>
 
 <div id="new-comment">
-  <%= render 'comments/form', review: @review, comment: @comment %>
+  <%= render 'public/comments/form', review: @review, comment: @comment %>
 </div>
 <div id="comments_area"> 
-  <%= render 'comments/review_comments', review: @review %>
+  <%= render 'public/comments/review_comments', review: @review %>
 </div>

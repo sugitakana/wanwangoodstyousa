@@ -1,21 +1,16 @@
 <% if customer_signed_in? %>
-  <% if current_customer.favorites.find_by(review_id: review.id) %>
-    <%= link_to review_favorites_path(review.id), method: :delete, remote: true, data: {"turbolinks" => false} do %>
-      <div class="vertical_favorite">
-       ♥<%= review.favorites.count %>
-      </div>
+  <%if current_customer.favorited_by?(review.id) %>
+    <%= link_to review_favorites_path(review), method: :delete, remote: true do %>
+       <i class="fas fa-heart", style="color: red;"></i><%= review.favorites.count %>
     <% end %>
   <% else %>
-    <%= link_to review_favorites_path(review.id), method: :post, remote: true, data: {"turbolinks" => false} do %>
-      <div class="vertical_favorite">
+    <%= link_to review_favorites_path(review), method: :post, remote: true do %>
         ♡<%= review.favorites.count %>
-      </div>
     <% end %>
   <% end %>
 <% else %>
   <%= link_to new_customer_session_path do %>
-    <div class="vertical_favorite">
       ♡<%= review.favorites.count %>
-    </div>
   <% end %>
 <% end %>
+
