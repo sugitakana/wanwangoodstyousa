@@ -10,7 +10,7 @@ class Review < ApplicationRecord
  
   def self.search(search)
     if search != ""
-      Review.where(['item_name LIKE(?) OR review LIKE(?)',"%#{search}%","%#{search}%"])  
+      Review.where(['item_name LIKE(?)',"%#{search}%"])  
     else
       Review.all
     end
