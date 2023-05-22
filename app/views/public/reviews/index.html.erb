@@ -1,7 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-       <%= render 'tag', tags: @tags %>
+      <table class="table table-bordered">
+        <tr>
+         <th>タグ検索</th>
+        </tr>
+        <% @tags.each do |tag| %>
+          <tr>
+            <td><%= link_to tag_path(tag.id) do %>
+                  <%= tag.name %>
+                <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     </div>
     <div class="col-md-9">
       <h3 class="mb-4">レビュー一覧<i class="fas fa-dog"></i>（全<%= @reviews.count %>件）</h3>

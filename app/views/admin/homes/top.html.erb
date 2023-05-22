@@ -1,30 +1,14 @@
-<%= render 'public/reviews/tag', tags: @tags %>
-
-<h2>レビュー一覧</h2>（全<%= @reviews.count %>件）
-<% @reviews.each do |review| %>
-  <%= link_to admin_customer_path(review.customer.id) do %>
-    <%= review.customer.name %>
-  <% end %>
-  <%= image_tag review.get_image(200, 200) %>
-  <%= review.item_name %>
- 
-  <div id="rate_<%= review.id %>"></div>
-  <script>
-    $(document).on('turbolinks:load', function() {
-      let elem = document.querySelector('#rate_<%= review.id %>');
-      if (elem == null) return;
-  
-      elem.innerHTML = "";
-      let opt = {  
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        score: "<%= review.rate %>",
-        readOnly: true,
-        half: false,
-      };
-      raty(elem, opt);
-    });
-  </script>
-  
-  <%= link_to "レビューを見る", admin_review_path(review.id) %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h3>レビュー一覧（全<%= @reviews.count %>件）</h3>
+    <% @reviews.each do |review| %>
+      <%= link_to admin_customer_path(review.customer.id) do %>
+        <%= review.customer.name %>
+      <% end %>
+      <%= image_tag review.get_image(200, 200) %>
+      <%= review.item_name %>
+      <%= render "public/reviews/rate", review: review %>
+      <%= link_to "レビューを見る", admin_review_path(review.id), class: "btn btn-warning" %>
+    <% end %>
+  </div>
+</div>
