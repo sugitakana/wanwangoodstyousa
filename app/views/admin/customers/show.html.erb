@@ -25,18 +25,18 @@
             </td>
           </tr>
         </table>
-        <div class="mt-4">
+        <div class="my-4 ml-3">
           <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
         </div>
       </div>
       <div class="col-md-9">
-        <h4>投稿したレビュー一覧</h4>
-        <% @reviews.each do |customer| %>
-          <%= image_tag review.get_image(250, 250) %>
-          <%= review.item_name %>
+        <h4 class="mb-3">投稿されたレビュー一覧</h4>
+        <% @reviews.each do |review| %>
+          <%= image_tag review.get_image(200, 200) %><br>
+          <%= review.item_name %><br>
            <%= review.item_price.to_s(:delimited) %>円
           <%= render "public/reviews/rate", review: review %>
-          <%= link_to "レビューを見る", admin_review_path(review.customer.id) %>
+          <%= link_to "レビューを見る", admin_review_path(review.customer.id), class: "btn btn-warning" %>
         <% end %>
       </div>
     </div>

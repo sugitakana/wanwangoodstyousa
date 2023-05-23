@@ -4,24 +4,26 @@
       <%= render 'public/reviews/tag', tags: @tags %>
     </div>
     <div class="col-md-9">
-      <h3 class="mb-4">検索結果<i class="fas fa-dog"></i>（全<%= @reviews.count %>件）</h3>
+      <h3 class="subtitle mb-4">検索結果<i class="fas fa-dog"></i>（全<%= @reviews.count %>件）</h3>
       <%= form_with(url: search_reviews_path, local: true, method: :get ) do |form| %>
         <%= form.text_field :keyword %>
         <%= form.submit "検索" %>
       <% end %>
-      <% @reviews.each do |review| %>
-        <%= link_to customer_path(customer.id) do %>
-          <%= review.customer.name %>
-        <% end %>
-        <%= image_tag review.get_image(200, 200) %>
-        <%= review.item_name %>
-        <%= review.item_price.to_s(:delimited) %>円
+      <div class="mt-4">
+       <% @reviews.each do |review| %>
+        <span>投稿者</span><%= link_to customer_path(review.customer.id), class: "text-decoration-none" do %>
+                              <%= review.customer.name %>さん
+                            <% end %>
         <div id="favorite_<%= review.id %>">
-          <%= render "favorites/favorite", review: review %>
+          <%= render "public/favorites/favorite", review: review %>
         </div>
+        <%= image_tag review.get_image(200, 200) %><br>
+        <%= review.item_name %><br>
+        <%= review.item_price.to_s(:delimited) %>円
         <%= render "rate", review: review %>
         <%= link_to "レビューを見る", review_path(review.id), class: "btn btn-warning" %>
-      <% end %>
+       <% end %>
+      </div>
     </div>
   </div>
 </div>

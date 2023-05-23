@@ -1,41 +1,25 @@
-<table>
-  <tr>
-    <th>タグ検索</th>
-  </tr>
-  <% @tags.each do |tag| %>
-   <tr>
-    <td><%= link_to tag_path(tag.id) do %>
-          <%= tag.name %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/reviews/tag', tags: @tags %>
+    </div>
+    <div class="col-md-9">
+      <h3 class="subtitle"><%= @tag.name %>一覧（全<%= @reviews.count %>件）</h3>
+      <div class="mt-4">
+        <% @reviews.each do |review| %>
+          <span>投稿者</span><%= link_to customer_path(review.customer.id), class: "text-decoration-none" do %>
+                                 <%= review.customer.name %>さん
+                                <% end %>
+          <div id="favorite_<%= review.id %>">
+            <%= render "public/favorites/favorite", review: review %>
+          </div>
+          <%= image_tag review.get_image(200, 200) %><br>
+          <%= review.item_name %><br>
+          <%= review.item_price.to_s(:delimited) %>円
+          <%= render "public/reviews/rate", review: review %>
+          <%= link_to "レビューを見る", review_path(review.id), class: "btn btn-warning" %>
         <% end %>
-    </td>
-   </tr>
-  <% end %>
-</table>
-<h2><%= @tag.name %>一覧（全<%= @reviews.count %>件）</h2>
-<% @reviews.each do |review| %>
-  <%= link_to customer_path(customer.id) do %>
-    <%= review.customer.name %>
-  <% end %>
-  <%= image_tag review.get_image(200, 200) %>
-  <%= review.item_name %>
- 
-  <div id="rate_<%= review.id %>"></div>
-  <script>
-    $(document).on('turbolinks:load', function() {
-      let elem = document.querySelector('#rate_<%= review.id %>');
-      if (elem == null) return;
-  
-      elem.innerHTML = "";
-      let opt = {  
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        score: "<%= review.rate %>",
-        readOnly: true,
-        half: false,
-      };
-      raty(elem, opt);
-    });
-  </script>
-  
-  <%= link_to "レビューを見る", review_path(review.id) %>
-<% end %>
+      </div>
+    </div>
+  </div>
+</div>

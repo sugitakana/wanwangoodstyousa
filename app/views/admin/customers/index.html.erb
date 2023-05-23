@@ -14,7 +14,7 @@
        <% @customers.each do |customer| %>
         <tr>
          <td><%= customer.id %></td>
-         <td><%= link_to admin_customer_path(customer.id) do %>
+         <td><%= link_to admin_customer_path(customer.id), class: "text-decoration-none" do %>
                <%= customer.name %>
              <% end %>
          </td>

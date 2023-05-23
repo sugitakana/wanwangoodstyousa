@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap');
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +16,15 @@
  *= require_tree .
  *= require_self
  */
+
+ .title{
+   font-family: 'Dela Gothic One', cursive;
+ }
+
+ .navbar-nav{
+   font-family: 'M PLUS 1 Code', sans-serif;
+ }
+
+ .subtitle{
+  font-family: 'BIZ UDGothic', sans-serif;
+ }
