@@ -1,45 +1,49 @@
-<h4>レビュー詳細</h4>
-<%= link_to customer_path(@review.customer.id) do %>
-  <%= @review.customer.name %>
-<% end %>
-<%= image_tag @review.get_image(250, 250) %>
-
-<%= render "rate", review: @review %>
-
-<div id="favorite_<%= @review.id %>">
-  <%= render "public/favorites/favorites", review: @review %>
-</div>
-
-<table>
-  <tr>
-    <th>商品名</th>
-    <td><%= @review.item_name %></td>
-  </tr>
-  <tr>
-    <th>タグ</th>
-    <td><%= @review.tag.name %></td>
-  </tr>
-  <tr>
-    <th>値段（税込）</th>
-    <td><%= @review.item_price.to_s(:delimited) %>円</td>
-  </tr>
-  <tr>
-    <th>商品を試した犬種</th>
-    <td><%= @review.dog_breed %></td>
-  </tr>
-</table>
-
-<p>レビュー</p>
-<%= @review.review %>
-
-<% if @review.customer == current_customer %>
- <%= link_to "編集する", edit_review_path(@review) %>
- <%= link_to "削除する", review_path(@review), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-<% end %>
-
-<div id="new-comment">
-  <%= render 'public/comments/form', review: @review, comment: @comment %>
-</div>
-<div id="comments_area"> 
-  <%= render 'public/comments/review_comments', review: @review %>
+<div class="container">
+  <h4>レビュー詳細</h4>
+  <div class="row">
+    <div class="col-md-4">
+      <%= link_to customer_path(@review.customer.id) do %>
+        <%= @review.customer.name %>
+      <% end %>
+      <div id="favorite_<%= @review.id %>">
+        <%= render "public/favorites/favorite", review: @review %>
+      </div>
+      <%= image_tag @review.get_image(250, 250) %>
+      <%= render "rate", review: @review %>
+    </div>
+    <div class="col-md-8">
+      <table class="table table-borderless">
+        <tr>
+          <th>商品名</th>
+          <td><%= @review.item_name %></td>
+        </tr>
+        <tr>
+          <th>タグ</th>
+          <td><%= @review.tag.name %></td>
+        </tr>
+        <tr>
+          <th>値段（税込）</th>
+          <td><%= @review.item_price.to_s(:delimited) %>円</td>
+        </tr>
+        <tr>
+          <th>商品を試した犬種</th>
+          <td><%= @review.dog_breed %></td>
+        </tr>
+      </table>
+      <p>レビュー</p>
+      <%= @review.review %>
+      <div class="my-3 text-right">
+       <% if @review.customer == current_customer %>
+        <%= link_to "編集する", edit_review_path(@review), class: "btn btn-success" %>
+        <%= link_to "削除する", review_path(@review), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+       <% end %>
+      </div>
+      <div id="new-comment">
+        <%= render 'public/comments/form', review: @review, comment: @comment %>
+      </div>
+      <div id="comments_area"> 
+        <%= render 'public/comments/review_comments', review: @review %>
+      </div>
+    </div>
+  </div>
 </div>
