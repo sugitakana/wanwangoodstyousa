@@ -1,0 +1,23 @@
+ja:
+    activerecord:
+      models:
+        customer: "会員"
+        admin: "管理者"
+      attributes:
+        customer:
+          name: "名前"
+          email: "メールアドレス"
+          password: "パスワード"
+          password_confirmation: "パスワード確認"
+          current_password: "現在のパスワード"
+        review:
+          item_name: "商品名"
+          item_price: "商品金額"
+          dog_breed: "犬種"
+          review: "レビュー"
+          rate: "評価"
+        tag:
+          name: "タグ"
+        admin:
+          email: "メールアドレス"
+          password: "パスワード"

@@ -3,7 +3,6 @@
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto">
       <h2 class="title mx-auto mb-4"><i class="fas fa-paw"></i>レビュー編集<i class="fas fa-paw"></i></h2>
       <%= form_with model: @review, url: review_path, local: true do |f| %>
-       <%= render 'layouts/error_messages', model: form.object %>
         <div class="form-group row">
           <label for="inputimage">商品画像</label>
           <%= f.file_field :image, accept: "image/*", class: "ml-3" %>

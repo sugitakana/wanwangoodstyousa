@@ -28,3 +28,7 @@
  .subtitle{
   font-family: 'BIZ UDGothic', sans-serif;
  }
+ 
+ .field_with_errors {
+  display: contents;
+}
