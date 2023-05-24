@@ -3,13 +3,14 @@
    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto">
     <h3 class="mb-4">タグ編集</h3>
     <%= form_with model: @tag, url: admin_tag_path do |f| %>
-     <div class="form-group row">
-      <label for="inputname">タグ名</label>
-      <%= f.text_field :name, class: "form-control" %>
-     </div>
-     <div class="text-center">
-      <%= f.submit "変更を保存する", class: "btn btn-success" %>
-     </div>
+     <%= render 'layouts/error_messages', model: form.object %>
+      <div class="form-group row">
+       <label for="inputname">タグ名</label>
+       <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="text-center">
+       <%= f.submit "変更を保存する", class: "btn btn-success" %>
+      </div>
     <% end %>
    </div>
   </div>

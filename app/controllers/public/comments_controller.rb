@@ -4,7 +4,11 @@ class Public::CommentsController < ApplicationController
     @review = Review.find(params[:review_id])
     @comment = current_customer.comments.new(comment_params)
     @comment.review_id = @review.id
-    @review_comment.save
+    if @review_comment.save
+       flash[:notice] = "コメントを送信しました"
+    else
+      flash[:alert] = "コメントを入力してください"
+    end
   end
   
   def destroy
