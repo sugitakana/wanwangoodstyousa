@@ -23,6 +23,7 @@
         <%= render "rate", review: review %>
         <%= link_to "レビューを見る", review_path(review.id), class: "btn btn-warning" %>
        <% end %>
+       <%= paginate reviews %>
       </div>
     </div>
   </div>
