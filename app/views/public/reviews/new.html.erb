@@ -29,7 +29,7 @@
           <%= f.text_area :review, placeholder: "商品のレビューをここに自由にお書きください", class: "form-control" %>
         </div>
         <div class="form-group row" id="rate">
-          <label for="inputrate">評価</label>
+          <label for="inputrate">評価　※投稿した後この5段階評価は変更できません</label>
           <%= f.hidden_field :rate, id: :review_rate %>
           <div id="post_raty", class="ml-3"></div>
       　</div>
@@ -42,7 +42,6 @@
             let opt = {
               starOn: "<%= asset_path('star-on.png') %>",
               starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
               scoreName: 'review[rate]',
             };
             raty(elem, opt);
