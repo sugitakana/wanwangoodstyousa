@@ -21,7 +21,8 @@ class Public::ReviewsController < ApplicationController
   end
   
   def search
-    @reviews = Review.search(params[:keyword]).page(params[:page]).per(8).order(created_at: :desc)
+    @reviews = Review.search(params[:keyword]).order(created_at: :desc)
+    @reviews = @reviews.page(params[:page]).per(8)
     @tags = Tag.all
   end
   

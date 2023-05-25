@@ -12,7 +12,7 @@
        <%= render "public/reviews/rate", review: review %>
        <%= link_to "レビューを見る", admin_review_path(review.id), class: "btn btn-warning" %>
       <% end %>
-      <%= paginate reviews %>
+      <%= paginate @reviews %>
     </div>
   </div>
 </div>
