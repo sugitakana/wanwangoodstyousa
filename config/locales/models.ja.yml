@@ -16,8 +16,7 @@ ja:
           dog_breed: "犬種"
           review: "レビュー"
           rate: "評価"
-        tag:
-          name: "タグ"
+          tag: "タグ"
         admin:
           email: "メールアドレス"
           password: "パスワード"

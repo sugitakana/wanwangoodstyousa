@@ -40,11 +40,11 @@
         <%= link_to "削除する", review_path(@review), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
        <% end %>
       </div>
-      <div class="new-comment">
-        <%= render 'public/comments/form', review: @review, comment: @comment %>
-      </div>
       <div id="comments_area"> 
         <%= render 'public/comments/review_comments', review: @review %>
+      </div>
+      <div class="new-comment mb-4">
+        <%= render 'public/comments/form', review: @review, comment: @comment %>
       </div>
     </div>
   </div>

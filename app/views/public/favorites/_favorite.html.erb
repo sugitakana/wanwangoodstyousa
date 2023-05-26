@@ -1,6 +1,6 @@
 <% if customer_signed_in? %>
   <%if current_customer.favorited_by?(review.id) %>
-    <%= link_to review_favorites_path(review), method: :delete, remote: true, class: "text-decoration-none text-dark" do %>
+    <%= link_to review_favorite_path(review, review.favorites), method: :delete, remote: true, class: "text-decoration-none text-dark" do %>
        <i class="fas fa-heart", style="color: red;"></i><%= review.favorites.count %>
     <% end %>
   <% else %>

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :tags, only:[:show]
     resources :reviews do
       resources :comments, only:[:create, :destroy]
-      resource :favorites, only:[:create, :destroy]
+      resources :favorites, only: [:create, :destroy]
         collection do
           get 'search'
         end

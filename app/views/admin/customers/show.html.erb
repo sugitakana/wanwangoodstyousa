@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="mb-4">会員登録情報</h2>
+  <h4 class="mb-4">会員登録情報・投稿されたレビュー一覧</h4>
     <div class="row">
       <div class="col-md-3">
         <table>
@@ -29,14 +29,15 @@
           <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
         </div>
       </div>
-      <div class="col-md-9">
-        <h4 class="mb-3">投稿されたレビュー一覧</h4>
+      <div class="row ml-5">
         <% @reviews.each do |review| %>
+         <div class="col-md-6 col-6">
           <%= image_tag review.get_image(200, 200) %><br>
           <%= review.item_name %><br>
            <%= review.item_price.to_s(:delimited) %>円
           <%= render "public/reviews/rate", review: review %>
           <%= link_to "レビューを見る", admin_review_path(review.customer.id), class: "btn btn-warning" %>
+         </div>
         <% end %>
         <%= paginate @reviews %>
       </div>

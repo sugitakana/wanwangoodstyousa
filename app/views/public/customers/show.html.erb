@@ -1,7 +1,7 @@
 <div class="container">
-  <h2 class="title mb-4"><i class="fas fa-paw"></i>会員登録情報<i class="fas fa-paw"></i></h2>
+  <h2 class="title mb-4"><i class="fas fa-paw"></i>会員登録情報・投稿したレビュー一覧<i class="fas fa-paw"></i></h2>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <table class="table">
         <tr>
           <th>名前</th>
@@ -23,19 +23,20 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-9">
-      <h4 class="subtitle">投稿したレビュー一覧<i class="fas fa-dog"></i></h4>
-      <% @reviews.each do |review| %>
-        <div id="favorite_<%= review.id %>">
-          <%= render "public/favorites/favorite", review: review %>
+     <div class="row ml-5">
+       <% @reviews.each do |review| %>
+        <div class="col-md-6 col-6">
+         <div id="favorite_<%= review.id %>">
+           <%= render "public/favorites/favorite", review: review %>
+         </div>
+         <%= image_tag review.get_image(200, 200) %><br>
+         <%= review.item_name %><br>
+         <%= review.item_price.to_s(:delimited) %>円
+         <%= render "public/reviews/rate", review: review %>
+         <%= link_to "レビューを見る", review_path(review.customer.id), class: "btn btn-warning" %>
         </div>
-        <%= image_tag review.get_image(200, 200) %><br>
-        <%= review.item_name %><br>
-        <%= review.item_price.to_s(:delimited) %>円
-        <%= render "public/reviews/rate", review: review %>
-        <%= link_to "レビューを見る", review_path(review.customer.id), class: "btn btn-warning" %>
-      <% end %>
-      <%= paginate @reviews %>
-    </div>
+       <% end %>
+       <%= paginate @reviews %>
+     </div>
   </div>
 </div>
