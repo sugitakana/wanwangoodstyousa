@@ -1,7 +1,7 @@
 <div class="container">
-  <h2 class="title mb-4"><i class="fas fa-paw"></i>会員登録情報・投稿したレビュー一覧<i class="fas fa-paw"></i></h2>
+  <h3 class="title mb-4"><i class="fas fa-paw"></i>会員登録情報・投稿したレビュー一覧<i class="fas fa-paw"></i></h3>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <table class="table">
         <tr>
           <th>名前</th>
@@ -12,31 +12,29 @@
           <td><%= @customer.introduction %></td>
         </tr>
       </table>
-      <div class="row">
         <% if @customer == current_customer %>
-         <div class="mx-auto">
+         <div class="mx-auto mb-3">
           <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-success" %>
          </div>
          <div class="mx-auto">
           <%= link_to "いいねした投稿", favorites_customer_path(@customer), class: "btn btn-danger" %>
          </div>
         <% end %>
-      </div>
     </div>
-     <div class="row ml-5">
-       <% @reviews.each do |review| %>
-        <div class="col-md-6 col-6">
-         <div id="favorite_<%= review.id %>">
-           <%= render "public/favorites/favorite", review: review %>
-         </div>
-         <%= image_tag review.get_image(200, 200) %><br>
-         <%= review.item_name %><br>
-         <%= review.item_price.to_s(:delimited) %>円
-         <%= render "public/reviews/rate", review: review %>
-         <%= link_to "レビューを見る", review_path(review.customer.id), class: "btn btn-warning" %>
-        </div>
-       <% end %>
-       <%= paginate @reviews %>
-     </div>
+     <% @reviews.each do |review| %>
+      <div class="col-md-3 col-5 mr-4 mb-3">
+       <div id="favorite_<%= review.id %>">
+         <%= render "public/favorites/favorite", review: review %>
+       </div>
+       <div class="image">
+         <%= image_tag review.get_image(200, 200) %>
+       </div>
+       <%= review.item_name %><br>
+       <%= review.item_price.to_s(:delimited) %>円
+       <%= render "public/reviews/rate", review: review %>
+       <%= link_to "レビューを見る", review_path(review), class: "btn btn-warning" %>
+      </div>
+     <% end %>
+     <%= paginate @reviews %>
   </div>
 </div>

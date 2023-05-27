@@ -1,13 +1,13 @@
-      <table class="table table-bordered">
-        <tr>
-         <th>タグ検索</th>
-        </tr>
-        <% @tags.each do |tag| %>
-          <tr>
-            <td><%= link_to tag_path(tag.id), class: "text-decoration-none text-dark" do %>
-                  <%= tag.name %>
-                <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
+<table class="table table-bordered">
+  <tr>
+    <th>タグ検索</th>
+  </tr>
+  <% @tags.each do |tag| %>
+    <tr>
+      <td><%= link_to tag_path(tag.id), class: "text-decoration-none text-dark" do %>
+            <%= tag.name %>
+          <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

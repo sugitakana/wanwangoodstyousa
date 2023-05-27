@@ -13,7 +13,7 @@
           <%= f.text_field :item_name, autofocus: true, class: "form-control" %>
         </div>
         <div class="form-group row d-flex flex-row">
-          <label for="inputitemprice">金額</label>
+          <label for="inputitemprice">金額(税込)</label>
           <%= f.number_field:item_price, placeholder: "数字のみ記入してください", class: "form-control" %>
         </div>
         <div class="form-group row">
@@ -31,15 +31,15 @@
         <div class="form-group row" id="rate">
           <label for="inputrate">評価　※投稿した後この5段階評価は変更できません</label>
           <%= f.hidden_field :rate, id: :review_rate %>
-          <div id="post_raty", class="ml-3"></div>
+          <div id="post_raty" class="mx-auto"></div>
       　</div>
 　      <script>
           $(document).on('turbolinks:load', function() {
             let elem = document.querySelector('#post_raty');
             if (elem == null) return;
-
+  
             elem.innerHTML = ""
-            let opt = {
+            let opt = {  
               starOn: "<%= asset_path('star-on.png') %>",
               starOff: "<%= asset_path('star-off.png') %>",
               scoreName: 'review[rate]',

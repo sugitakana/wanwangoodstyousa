@@ -9,7 +9,9 @@
         <div id="favorite_<%= review.id %>">
           <%= render "public/favorites/favorite", review: review %>
         </div>
-        <%= image_tag review.get_image(200, 200) %><br>
+        <div class="image">
+          <%= image_tag review.get_image(200, 200) %>
+        </div>
         <%= review.item_name %><br>
         <%= review.item_price.to_s(:delimited) %>円
         <%= render "public/reviews/rate", review: review %>
