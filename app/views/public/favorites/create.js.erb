@@ -1,1 +1,1 @@
-$('#favorite_<%= @review_id %>').html("<%= j(render 'public/favorites/favorite', review: @review ) %>");
+$('#favorite_<%= @review.id %>').html("<%= j(render partial: 'public/favorites/favorite', locals: {review: @review}) %>");
