@@ -17,12 +17,12 @@ class Public::ReviewsController < ApplicationController
   
   def index
     @tags = Tag.all
-    @reviews = Review.page(params[:page]).per(6)
+    @reviews = Review.page(params[:page]).per(8)
   end
   
   def search
     @reviews = Review.search(params[:keyword]).order(created_at: :desc)
-    @reviews = @reviews.page(params[:page]).per(6)
+    @reviews = @reviews.page(params[:page]).per(8)
     @tags = Tag.all
   end
   

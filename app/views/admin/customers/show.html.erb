@@ -1,8 +1,8 @@
 <div class="container">
-  <h4 class="mb-4">会員登録情報・投稿されたレビュー一覧</h4>
+  <h4 class="mb-4">会員登録情報</h4>
     <div class="row">
-      <div class="col-md-3">
-        <table>
+      <div class="col-lg-3">
+        <table class="table table-borderless">
           <tr>
             <th>会員ID</th>
             <td><%= @customer.id %></td>
@@ -29,18 +29,21 @@
           <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
         </div>
       </div>
-      <div class="row ml-5">
-        <% @reviews.each do |review| %>
-         <div class="col-md-6 col-6">
-          <%= image_tag review.get_image(200, 200) %><br>
-          <%= review.item_name %><br>
-           <%= review.item_price.to_s(:delimited) %>円
-          <%= render "public/reviews/rate", review: review %>
-          <%= link_to "レビューを見る", admin_review_path(review), class: "btn btn-warning" %>
-         </div>
-        <% end %>
+      <div class="col-lg-9 mt-4">
+       <h5 class="subtittle">投稿されたレビュー一覧</h5>
+        <table class="table">
+         <% @reviews.each do |review| %>
+          <tr>
+           <td id="favorite_<%= review.id %>"><%= render "public/favorites/favorite", review: review %></td>
+           <td class="image"><%= image_tag review.get_image(200, 200) %></td>
+           <td><%= review.item_name %></td>
+           <td>¥<%= review.item_price.to_s(:delimited) %></td>
+           <td><%= render "public/reviews/rate", review: review %></td>
+           <td><%= link_to "レビューを見る", review_path(review.id), class: "btn btn-warning" %></td>
+          </tr>
+         <% end %>
+        </table>
         <%= paginate @reviews %>
       </div>
     </div>
-  </div>
 </div>
