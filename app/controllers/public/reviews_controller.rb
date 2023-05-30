@@ -17,7 +17,7 @@ class Public::ReviewsController < ApplicationController
   
   def index
     @tags = Tag.all
-    @reviews = Review.page(params[:page]).per(8)
+    @reviews = Review.order(created_at: :desc).page(params[:page]).per(8)
   end
   
   def search
