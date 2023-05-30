@@ -28,10 +28,7 @@
       <tr>
        <td id="favorite_<%= review.id %>"><%= render "public/favorites/favorite", review: review %></td>
        <td class="image"><%= image_tag review.get_image(200, 200) %></td>
-       <td><%= review.item_name %></td>
-       <td>¥<%= review.item_price.to_s(:delimited) %></td>
-       <td><%= render "public/reviews/rate", review: review %></td>
-       <td><%= link_to "レビューを見る", review_path(review.id), class: "btn btn-warning" %></td>
+       <td class ="text-truncate"><%= review.item_name %><br>¥<%= review.item_price.to_s(:delimited) %><br><%= render "public/reviews/rate", review: review %><br><%= link_to "レビューを見る", review_path(review.id), class: "btn btn-warning" %></td>
      </tr>
     <% end %>
    </table>
