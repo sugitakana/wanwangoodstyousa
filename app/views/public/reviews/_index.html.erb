@@ -1,5 +1,5 @@
 <% reviews.each do |review| %>
- <div class="col-lg-3 col-sm-6 my-3">
+ <div class="col-lg-3 col-sm-6 my-3 text-truncate">
   <span>投稿者</span><%= link_to customer_path(review.customer.id), class: "text-decoration-none" do %>
                       <%= review.customer.name %>さん
                      <% end %>
