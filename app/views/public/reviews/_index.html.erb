@@ -1,0 +1,18 @@
+<% reviews.each do |review| %>
+ <div class="col-lg-3 col-sm-6 my-3">
+  <span>投稿者</span><%= link_to customer_path(review.customer.id), class: "text-decoration-none" do %>
+                      <%= review.customer.name %>さん
+                     <% end %>
+  <div id="favorite_<%= review.id %>">
+   <%= render "public/favorites/favorite", review: review %>
+  </div>
+  <div class="image">
+   <%= image_tag review.get_image(200, 200) %>
+  </div>
+  <%= review.item_name %><br>
+  ¥<%= review.item_price.to_s(:delimited) %>
+  <%= render "public/reviews/rate", review: review %>
+  <%= link_to "レビューを見る", review_path(review.id), class: "btn btn-warning" %>
+ </div>
+<% end %>
+<%= paginate reviews %>
