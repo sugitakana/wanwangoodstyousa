@@ -15,4 +15,6 @@
   <%= link_to "レビューを見る", review_path(review.id), class: "btn btn-warning" %>
  </div>
 <% end %>
-<%= paginate reviews %>
+<div class="col-12 my-4">
+ <%= paginate reviews %>
+</div>
