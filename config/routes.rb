@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get '/customers/confirm_withdraw' => 'customers#confirm_withdraw', as: 'confirm_withdraw'
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
     devise_scope :customer do
-      post 'customers/guest_sign_in', to: 'public/sessions#new_guest'
+      post 'guest_sign_in', to: 'sessions#guest_sign_in'
     end
     resources :customers, only:[:show, :edit, :update] do
       member do
