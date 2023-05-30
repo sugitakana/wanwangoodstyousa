@@ -2,7 +2,7 @@
  <h3 class="mb-4">レビュー一覧（全<%= @reviews.count %>件）</h3>
   <div class="row">
     <% @reviews.each do |review| %>
-      <div class="col-lg-3 col-6 my-3">
+      <div class="col-lg-3 col-6 my-3 text-truncate">
         <span>投稿者</span><%= link_to admin_customer_path(review.customer.id), class: "text-decoration-none" do %>
                              <%= review.customer.name %>さん
                            <% end %>
