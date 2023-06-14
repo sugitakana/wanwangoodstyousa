@@ -1,5 +1,7 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :search, :show]
+  before_action :is_matching_login_customer, only: [:edit, :update]
+  
   def new
     @review = Review.new
   end
@@ -54,5 +56,12 @@ class Public::ReviewsController < ApplicationController
   private
   def review_params
     params.require(:review).permit(:tag_id, :item_name, :item_price, :image, :dog_breed, :review, :rate)
+  end
+  
+  def is_matching_login_customer
+    customer = Customer.find(params[:id])
+    unless customer.id == current_customer.id
+      redirect_to reviews_path
+    end
   end
 end
