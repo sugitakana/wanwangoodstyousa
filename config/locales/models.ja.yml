@@ -20,3 +20,5 @@ ja:
         admin:
           email: "メールアドレス"
           password: "パスワード"
+        tag:
+          name: "タグ名"
