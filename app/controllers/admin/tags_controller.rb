@@ -6,11 +6,12 @@ class Admin::TagsController < ApplicationController
   end
   
   def create
-    @tag = Tag.new(genre_params)
+    @tags = Tag.all
+    @tag = Tag.new(tag_params)
     if @tag.save
        redirect_to admin_tags_path
     else
-      flash[:alert] = "タグ名を入力してください"
+      render 'index'
     end
   end
   
@@ -29,7 +30,7 @@ class Admin::TagsController < ApplicationController
   end
   
   private
-    def genre_params
+    def tag_params
       params.require(:tag).permit(:name)
     end
 end
