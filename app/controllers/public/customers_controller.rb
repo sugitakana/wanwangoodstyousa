@@ -2,10 +2,9 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   
   def favorites
+    
     @customer = Customer.find(params[:id])
-    favorites = Favorite.where(customer_id: @customer.id).pluck(:review_id)
-    @favorite_reviews = Review.find(favorites)
-    @favorite_reviews = Kaminari.paginate_array(@favorite_reviews).page(params[:page]).per(8)
+    @favorite_reviews = @customer.favorite_reviews.page(params[:page]).per(8)
   end
   
   def show
