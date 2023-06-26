@@ -1,0 +1,15 @@
+ <div id="post_raty" class="mx-auto"></div>
+ <script>
+   $(document).on('turbolinks:load', function() {
+     let elem = document.querySelector('#post_raty');
+     if (elem == null) return;
+  
+     elem.innerHTML = ""
+     let opt = {  
+       starOn: "<%= asset_path('star-on.png') %>",
+       starOff: "<%= asset_path('star-off.png') %>",
+       scoreName: 'review[rate]',
+     };
+     raty(elem, opt);
+   });
+ </script>

@@ -28,7 +28,11 @@
           <label for="inputreview">レビュー</label>
           <%= f.text_area :review, class: "form-control" %>
         </div>
-        <%= render "rate", review: @review %>
+        <div class="form-group row" id="rate">
+          <label for="inputrate">評価</label>
+          <%= f.hidden_field :rate, id: :review_rate %>
+          <%= render "new_rate"%>
+      　</div>
         <div class="text-center mb-4">
           <%= f.submit "変更を保存する", class: "btn btn-success" %>
         </div>

@@ -29,24 +29,10 @@
           <%= f.text_area :review, placeholder: "商品のレビューをここに自由にお書きください", class: "form-control" %>
         </div>
         <div class="form-group row" id="rate">
-          <label for="inputrate">評価　※投稿した後この5段階評価は変更できません</label>
+          <label for="inputrate">評価</label>
           <%= f.hidden_field :rate, id: :review_rate %>
-          <div id="post_raty" class="mx-auto"></div>
+          <%= render "new_rate"%>
       　</div>
-　      <script>
-          $(document).on('turbolinks:load', function() {
-            let elem = document.querySelector('#post_raty');
-            if (elem == null) return;
-  
-            elem.innerHTML = ""
-            let opt = {  
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              scoreName: 'review[rate]',
-            };
-            raty(elem, opt);
-          });
-        </script>
         <div class="text-center mb-4">
           <%= f.submit "投稿する", class: "btn btn-primary" %>
         </div>
