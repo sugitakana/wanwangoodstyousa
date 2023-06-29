@@ -9,6 +9,7 @@
         <div class="image">
           <%= image_tag review.get_image(200, 200) %>
         </div>
+        <%= I18n.l review.created_at %><br>
         <%= review.item_name %><br>
         <%= review.item_price.to_s(:delimited) %>円
         <%= render "public/reviews/rate", review: review %>
