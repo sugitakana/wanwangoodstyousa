@@ -27,7 +27,7 @@
      <% @reviews.each do |review| %>
       <tr>
        <td id="favorite_<%= review.id %>"><%= render "public/favorites/favorite", review: review %></td>
-       <td class="image"><%= image_tag review.get_image(200, 200) %></td>
+       <td class="image"><%= I18n.l review.created_at %><br><%= image_tag review.get_image(200, 200) %></td>
        <td><%= review.item_name %><br>¥<%= review.item_price.to_s(:delimited) %><br><%= render "public/reviews/rate", review: review %><br><%= link_to "レビューを見る", review_path(review.id), class: "btn btn-warning" %></td>
      </tr>
     <% end %>
