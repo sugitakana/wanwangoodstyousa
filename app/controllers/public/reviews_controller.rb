@@ -59,8 +59,8 @@ class Public::ReviewsController < ApplicationController
   end
   
   def is_matching_login_customer
-    customer = Customer.find(params[:id])
-    unless customer.id == current_customer.id
+    review = Review.find(params[:id])
+    unless review.customer.id == current_customer.id
       redirect_to reviews_path
     end
   end

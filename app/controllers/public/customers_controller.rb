@@ -1,21 +1,21 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def favorites
-    
+
     @customer = Customer.find(params[:id])
     @favorite_reviews = @customer.favorite_reviews.page(params[:page]).per(8)
   end
-  
+
   def show
     @customer = Customer.find(params[:id])
     @reviews = @customer.reviews.page(params[:page]).per(6)
   end
-  
+
   def edit
     @customer = current_customer
   end
-  
+
   def update
     @customer = current_customer
     if @customer.update(customer_params)
@@ -25,19 +25,19 @@ class Public::CustomersController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def confirm_withdraw
   end
-  
+
   def withdraw
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
   end
-  
+
   private
-  
+
   def customer_params
     params.require(:customer).permit(:name, :introduction, :email, :is_deleted)
   end
