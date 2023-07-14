@@ -10,10 +10,10 @@ class Customer < ApplicationRecord
   has_many :comments, dependent: :destroy
    
   def self.guest
-   find_or_create_by!(email: 'aaa@aaa.com') do |customer|
-    customer.password = SecureRandom.urlsafe_base64
+   find_or_create_by!(email: 'taro@example.com') do |customer|
+    customer.password = 'password'
     customer.password_confirmation = customer.password
-    customer.name = 'ゲスト'
+    customer.name = '太郎'
    end
   end
   
