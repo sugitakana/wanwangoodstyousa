@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
    find_or_create_by!(email: 'taro@example.com') do |customer|
     customer.password = 'password'
     customer.password_confirmation = customer.password
-    customer.name = '太郎'
+    customer.name = 'ゲスト'
    end
   end
   
