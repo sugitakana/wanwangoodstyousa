@@ -12,7 +12,7 @@ Admin.create!(
 
 Customer.create!(
   [
-    {name: '太郎', email: 'taro@example.com', password: 'password'},
+    {name: 'ゲスト', email: 'taro@example.com', password: 'password'},
     {name: '花子', email: 'hanako@example.com', password: 'password'},
     {name: '山田', email: 'yamada@example.com', password: 'password'},
     {name: '二郎', email: 'jiro@example.com', password: 'password'}
